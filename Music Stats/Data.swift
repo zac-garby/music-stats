@@ -9,6 +9,8 @@
 import Foundation
 import MediaPlayer
 
+let maximumCategories = 8
+
 struct OverviewData {
     var topGenre: String
     var topArtist: String
@@ -110,4 +112,47 @@ func fetchOverview() -> OverviewData? {
         avgSkips: Float(totalSkips) / Float(songs.count),
         explicitRatio: Float(totalExplicit) / Float(songs.count)
     )
+}
+
+func getArtistData() -> [(String, Double)]? {
+    guard let songs = MPMediaQuery.songs().items else {
+        return nil
+    }
+    
+    var data: [String:Int] = [:]
+    
+    for song in songs {
+        guard let artist = song.artist else {
+            return nil
+        }
+        
+        if data.keys.contains(artist) {
+            data[artist] = data[artist]! + 1
+        } else {
+            data[artist] = 1
+        }
+    }
+    
+    return process(data: data)
+}
+
+func process(data dict: [String:Int]) -> [(String, Double)] {
+    let total = dict.reduce(0.0) { (result, pair) in
+        return result + Double(pair.value)
+    }
+    
+    var data = dict
+        .map({ (key, value) in (key, Double(value)) })
+        .filter({ (_, value) in value / total > 0.02 })
+        .sorted(by: { a, b in a.1 > b.1 })
+    
+    let newTotal = data.reduce(0.0) { (result, pair) in
+        return result + Double(pair.1)
+    }
+    
+    if newTotal != total {
+        data.append(("\0\0", total - newTotal))
+    }
+    
+    return data
 }

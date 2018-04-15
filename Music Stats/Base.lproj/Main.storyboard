@@ -110,25 +110,6 @@
             </objects>
             <point key="canvasLocation" x="744.79999999999995" y="-18.440779610194905"/>
         </scene>
-        <!--Genres-->
-        <scene sceneID="ueC-27-IXO">
-            <objects>
-                <viewController title="Genres" id="OPj-Cu-hYC" customClass="GenresViewController" customModule="Music_Stats" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1yL-3V-caa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="ybP-XH-CSi"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Genres" image="record" id="jLN-9h-JY1"/>
-                    <connections>
-                        <segue destination="7wy-7q-N7c" kind="showDetail" identifier="data-error" animates="NO" id="zQL-T0-lHg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T3t-8O-1tq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1439" y="-18"/>
-        </scene>
         <!--Can't access library-->
         <scene sceneID="2CD-V5-Bxx">
             <objects>
@@ -219,7 +200,7 @@
                     <connections>
                         <segue destination="wwt-Cz-Ytr" kind="relationship" relationship="viewControllers" id="LCF-Kh-kpD"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="xwN-eF-56v"/>
-                        <segue destination="OPj-Cu-hYC" kind="relationship" relationship="viewControllers" id="58c-cL-jgi"/>
+                        <segue destination="4f8-he-na2" kind="relationship" relationship="viewControllers" id="oAl-Cn-ycZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -303,6 +284,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZG-c6-3Tp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="52" y="-18.440779610194905"/>
+        </scene>
+        <!--Genres-->
+        <scene sceneID="1v7-Wh-qYO">
+            <objects>
+                <viewController title="Genres" id="4f8-he-na2" customClass="GenresViewController" customModule="Music_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hah-r4-rI5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="82m-sh-3RB">
+                                <rect key="frame" x="0.0" y="379" width="375" height="239"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="artist cell" rowHeight="69" id="eGA-Ky-xCf" userLabel="Artist Cell" customClass="ArtistCell" customModule="Music_Stats" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="69"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eGA-Ky-xCf" id="TG2-T2-fCr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUA-Jt-Ed0" userLabel="Colour Circle" customClass="ColourCircle" customModule="Music_Stats" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="19" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="AeN-fB-lT2"/>
+                                                        <constraint firstAttribute="width" constant="32" id="FWK-9e-Uhz"/>
+                                                        <constraint firstAttribute="width" secondItem="OUA-Jt-Ed0" secondAttribute="height" multiplier="1:1" id="Ot1-7J-Yfl"/>
+                                                    </constraints>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R7v-2g-J0N">
+                                                    <rect key="frame" x="48" y="15" width="312" height="38.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1D-Ft-oGx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="312" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnX-uk-Q4H">
+                                                            <rect key="frame" x="0.0" y="20.5" width="312" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OUA-Jt-Ed0" firstAttribute="centerY" secondItem="TG2-T2-fCr" secondAttribute="centerY" id="3Pb-hZ-aFG"/>
+                                                <constraint firstItem="R7v-2g-J0N" firstAttribute="leading" secondItem="OUA-Jt-Ed0" secondAttribute="trailing" constant="8" id="J3h-d2-Snv"/>
+                                                <constraint firstItem="OUA-Jt-Ed0" firstAttribute="leading" secondItem="TG2-T2-fCr" secondAttribute="leading" constant="8" id="Kb6-ZL-li1"/>
+                                                <constraint firstItem="R7v-2g-J0N" firstAttribute="centerY" secondItem="TG2-T2-fCr" secondAttribute="centerY" id="QPq-6E-Uqm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="R7v-2g-J0N" secondAttribute="trailing" id="emy-vL-4AE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="colour" destination="OUA-Jt-Ed0" id="gKQ-hw-awn"/>
+                                            <outlet property="name" destination="b1D-Ft-oGx" id="4PU-vt-5UY"/>
+                                            <outlet property="percentage" destination="PnX-uk-Q4H" id="H9s-hc-v03"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57k-ds-JHV" userLabel="Pie Chart" customClass="PieChartView" customModule="Music_Stats" customModuleProvider="target">
+                                <rect key="frame" x="16" y="28" width="343" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="57k-ds-JHV" secondAttribute="height" multiplier="1:1" id="10o-v5-EuX"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q7c-75-nqF">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="q7c-75-nqF" firstAttribute="centerY" secondItem="hah-r4-rI5" secondAttribute="centerY" id="4y5-j0-uz7"/>
+                            <constraint firstItem="82m-sh-3RB" firstAttribute="leading" secondItem="ZjV-Ro-Uqf" secondAttribute="leading" id="UNI-yb-bT8"/>
+                            <constraint firstItem="57k-ds-JHV" firstAttribute="top" secondItem="ZjV-Ro-Uqf" secondAttribute="top" constant="8" id="YJq-aC-73f"/>
+                            <constraint firstItem="82m-sh-3RB" firstAttribute="top" secondItem="57k-ds-JHV" secondAttribute="bottom" constant="8" id="byF-gG-tNY"/>
+                            <constraint firstItem="57k-ds-JHV" firstAttribute="leading" secondItem="ZjV-Ro-Uqf" secondAttribute="leading" constant="16" id="eEY-7y-e85"/>
+                            <constraint firstItem="ZjV-Ro-Uqf" firstAttribute="bottom" secondItem="82m-sh-3RB" secondAttribute="bottom" id="oOI-Ms-VW7"/>
+                            <constraint firstItem="ZjV-Ro-Uqf" firstAttribute="trailing" secondItem="57k-ds-JHV" secondAttribute="trailing" constant="16" id="poz-pO-SXJ"/>
+                            <constraint firstItem="57k-ds-JHV" firstAttribute="centerX" secondItem="hah-r4-rI5" secondAttribute="centerX" id="qrR-Xa-Mb0"/>
+                            <constraint firstItem="q7c-75-nqF" firstAttribute="centerX" secondItem="hah-r4-rI5" secondAttribute="centerX" id="qyP-NH-96s"/>
+                            <constraint firstItem="ZjV-Ro-Uqf" firstAttribute="trailing" secondItem="82m-sh-3RB" secondAttribute="trailing" id="vJc-WZ-iIL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZjV-Ro-Uqf"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Genres" image="record" id="MxA-5i-p1z"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="q7c-75-nqF" id="cfJ-Hc-tyI"/>
+                        <outlet property="chart" destination="57k-ds-JHV" id="VB5-Rw-Vs9"/>
+                        <outlet property="table" destination="82m-sh-3RB" id="EU4-2t-Cqa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91j-0x-wUV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1425" y="-18"/>
         </scene>
     </scenes>
     <resources>

@@ -27,7 +27,7 @@ class ArtistsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let fetchedData = getArtistData() else {
+        guard let fetchedData = getData(category: { song in song.artist }) else {
             performSegue(withIdentifier: "data-error", sender: nil)
             return
         }
@@ -55,12 +55,12 @@ class ArtistsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "artist cell") as! ArtistCell
-        let name = data[indexPath.row].0
+        let (name, count) = data[indexPath.row]
         
         if let proportion = chart.getPercentage(of: name) {
             let percentage = proportion * 100
             cell.name.text = name
-            cell.percentage.text = "\(round(percentage * 10) / 10)%" // rounded to 2 d.p.
+            cell.percentage.text = "\(round(percentage * 10) / 10)% (\(Int(count)) tracks)" // rounded to 2 d.p.
             cell.colour.fill = chart.colour(for: name)!
         }
         

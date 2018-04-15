@@ -114,7 +114,7 @@ func fetchOverview() -> OverviewData? {
     )
 }
 
-func getArtistData() -> [(String, Double)]? {
+func getData(category fn: (MPMediaItem) -> String?) -> [(String, Double)]? {
     guard let songs = MPMediaQuery.songs().items else {
         return nil
     }
@@ -122,14 +122,14 @@ func getArtistData() -> [(String, Double)]? {
     var data: [String:Int] = [:]
     
     for song in songs {
-        guard let artist = song.artist else {
-            return nil
+        guard let category = fn(song) else {
+            continue
         }
         
-        if data.keys.contains(artist) {
-            data[artist] = data[artist]! + 1
+        if data.keys.contains(category) {
+            data[category] = data[category]! + 1
         } else {
-            data[artist] = 1
+            data[category] = 1
         }
     }
     

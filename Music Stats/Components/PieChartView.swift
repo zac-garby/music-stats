@@ -83,7 +83,7 @@ import UIKit
         var colours: [UIColor] = []
         
         for (key, _) in data {
-            if key == "\0\0" { // two null characters denotes "other"
+            if key == "Other\0" {
                 colours.append(UIColor(
                     hue: 0.0,
                     saturation: 0.0,

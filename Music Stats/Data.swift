@@ -151,7 +151,7 @@ func process(data dict: [String:Int]) -> [(String, Double)] {
     }
     
     if newTotal != total {
-        data.append(("\0\0", total - newTotal))
+        data.append(("Other\0", total - newTotal))
     }
     
     return data

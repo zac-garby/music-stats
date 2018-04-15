@@ -49,10 +49,7 @@ class ArtistsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = table.cellForRow(at: indexPath) as! ArtistCell
-        var name = cell.name.text
-        if name == "Other" {
-            name = "\0\0"
-        }
+        let name = cell.name.text
         
         chart.selected = name
     }
@@ -67,11 +64,7 @@ class ArtistsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if let proportion = chart.getPercentage(of: name) {
             let percentage = proportion * 100
-            if name == "\0\0" { // Other
-                cell.name.text = "Other"
-            } else {
-                cell.name.text = name
-            }
+            cell.name.text = name
             cell.percentage.text = "\(round(percentage * 10) / 10)%" // rounded to 2 d.p.
             cell.colour.fill = chart.colour(for: name)!
         }

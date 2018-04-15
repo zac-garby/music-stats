@@ -13,12 +13,7 @@ class ArtistsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var data: [(String, Double)] = [
-        ("The Red Hot Chili Peppers", 60),
-        ("The Clash", 15),
-        ("The Smashing Pumpkins", 30),
-        ("Green Day", 5),
-    ]
+    var data: [(String, Double)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
